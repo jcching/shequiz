@@ -52,6 +52,8 @@ $(function() {
 function drawQuestion(num) {
 	answered = false;//clear the answered state
 	$("#refLabel").text(bank[num].ref);
+	$("#refLabel").append("<h6>"+bank[num].source+"</h6>");
+
 	$("#questionLabel").text(bank[num].question);
 
 	$("#ansA>p").text(bank[num].a);
