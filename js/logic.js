@@ -40,6 +40,7 @@ $(function() {
 		var searchNumber = $("#numberSearchBox").val()-1;
 		drawQuestion(searchNumber);
 		$('#searchModal').modal('toggle');
+		$('.navbar-collapse').collapse('hide'); 
 	});
 
 });
