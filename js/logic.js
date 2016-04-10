@@ -44,7 +44,9 @@ $(function() {
 	});
 
 	//start the timer
-	$('#timer').stopwatch({format: '{Minutes} and {s.}'}).stopwatch('start');
+	$('#timer').timer({
+    	format: '%M:%S'
+	});
 
 });
 
