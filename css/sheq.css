@@ -4,11 +4,11 @@
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 85px;
+  /*margin-bottom: 85px;*/
 }
 
 .footer {
-  position: absolute;
+  /*position: absolute;*/
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
