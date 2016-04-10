@@ -10,16 +10,6 @@ $(function() {
 	//draw
 	drawQuestion(questionNum);
 
-
-	$( "#bodyContainer" ).click(function() {
-		//whole page responder
-		// if(answered){
-		// 	questionNum = Math.floor(Math.random()*bank.length);
-		// 	drawQuestion(questionNum);
-		// }
-	});
-		//drawAnswer(questionNum,1);
-
 	//click handlers
 	$( "#ansA" ).click(function() {
 	  	if(answered){
@@ -46,6 +36,11 @@ $(function() {
 		}
 	});
 
+	$("#numberSearchButton").click(function(){
+		var searchNumber = $("#numberSearchBox").val()-1;
+		drawQuestion(searchNumber);
+		$('#searchModal').modal('toggle');
+	});
 
 });
 

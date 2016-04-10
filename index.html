@@ -32,11 +32,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">SHEQuiz</a>
+          <a class="navbar-brand" href="#">SHEQuiz@CLP</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Random</a></li>
+            <li class="active"><a href="#">
+              <span class="glyphicon glyphicon-random" aria-hidden="true"></span> Random</a>
+            </li>
+            <li id="searchButton"><a href="#"data-toggle="modal" data-target="#searchModal"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -73,7 +76,7 @@
     </div><!-- /.container -->
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Information Classification : PROPRIETARY Idea By Antony Ho, Code by John Ching</p><p class="text-muted">©2016 CLP Power Hong Kong Limited.中華電力有限公司 All Rights Reserved</p>
+        <p class="text-muted">Idea By Antony Ho, Code by John Ching | Information Classification : PROPRIETARY </p><p class="text-muted">©2016 CLP Power Hong Kong Limited.中華電力有限公司 All Rights Reserved</p>
       </div>
     </footer>
 
@@ -88,6 +91,27 @@
 
     <script src="js/logic.js"></script>
   
+<!-- Modal for searching question number -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Load a question by number</h4>
+      </div>
+      <div class="modal-body"><div class="input-group">
+
+  <span class="input-group-addon" id="basic-addon1">QA</span>
+      <input type="text" class="form-control" placeholder="123" id="numberSearchBox">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="numberSearchButton"><span class="glyphicon glyphicon-search" aria-hidden="true"></button>
+      </span>
+    </div><!-- /input-group -->
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>
