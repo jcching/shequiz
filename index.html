@@ -65,7 +65,9 @@
               <p class="list-group-item-text" >loading</p> 
             </a>
          </div>
-         <div id="answerRecord">
+         <div id="accessories">
+          <span class="label label-danger" id="timer">00:00:00</span>
+          <span id="answerRecord"></span>
          </div>
 
 
@@ -87,6 +89,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- load up the timer library -->
+
+    <script src="js/jquery.stopwatch.js"></script>
+    <!-- questionbank is loaded here -->
     <script type="text/javascript" language="javascript" src="js/data.json"></script> 
 
     <script src="js/logic.js"></script>
@@ -102,7 +109,7 @@
       <div class="modal-body"><div class="input-group">
 
   <span class="input-group-addon" id="basic-addon1">QA</span>
-      <input type="text" class="form-control" placeholder="123" id="numberSearchBox">
+      <input type="number" min="1" max="1538" class="form-control" placeholder="123" id="numberSearchBox">
       <span class="input-group-btn">
         <button class="btn btn-primary" type="button" id="numberSearchButton"><span class="glyphicon glyphicon-search" aria-hidden="true"></button>
       </span>

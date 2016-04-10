@@ -43,6 +43,9 @@ $(function() {
 		$('.navbar-collapse').collapse('hide'); 
 	});
 
+	//start the timer
+	$('#timer').stopwatch({format: '{Minutes} and {s.}'}).stopwatch('start');
+
 });
 
 function drawQuestion(num) {
