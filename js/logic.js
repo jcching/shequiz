@@ -73,6 +73,7 @@ function drawAnswer(num,selected){
 
 	var ansNum;
 	var logoToAdd;
+	var correct;
 
 	if (!answered) {
 		//this code only runs if the question is in unanswered state
@@ -82,8 +83,8 @@ function drawAnswer(num,selected){
 			ansNum=0;
 
 			$("#ansA").addClass("list-group-item-success");
-			$("#ansB").addClass("list-group-item-danger");
-			$("#ansC").addClass("list-group-item-danger");
+			// $("#ansB").addClass("list-group-item-danger");
+			// $("#ansC").addClass("list-group-item-danger");
 
 
 		}else if(bank[num].ans=="B") {
@@ -91,16 +92,16 @@ function drawAnswer(num,selected){
 			ansNum=1;
 			$("#ansB").addClass("list-group-item-success");
 
-			$("#ansA").addClass("list-group-item-danger");
-			$("#ansC").addClass("list-group-item-danger");
+			// $("#ansA").addClass("list-group-item-danger");
+			// $("#ansC").addClass("list-group-item-danger");
 
 		}else if(bank[num].ans=="C") {
 
 			ansNum=2;
 			$("#ansC").addClass("list-group-item-success");
 
-			$("#ansB").addClass("list-group-item-danger");
-			$("#ansA").addClass("list-group-item-danger");
+			// $("#ansB").addClass("list-group-item-danger");
+			// $("#ansA").addClass("list-group-item-danger");
 
 		}
 
@@ -108,18 +109,23 @@ function drawAnswer(num,selected){
 
 		if (selected==ansNum) {
 			console.log("Correct!");
+			correct=true;
 			logoToAdd="<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>";
 		}else{
+			correct=false;
 			logoToAdd="<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>"
 		}
 
 		//add tick cross
 		if (selected==0) {
 			$("#ansA>p").append(logoToAdd);
+			if (!correct) {$("#ansA").addClass("list-group-item-danger");}
 		}else if (selected==1) {
 			$("#ansB>p").append(logoToAdd);
+			if (!correct) {$("#ansB").addClass("list-group-item-danger");}
 		}else if (selected==2){
 			$("#ansC>p").append(logoToAdd);
+			if (!correct) {$("#ansC").addClass("list-group-item-danger");}
 		}
 
 		//also add tickcross to record
