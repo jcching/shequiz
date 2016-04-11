@@ -32,3 +32,23 @@ body {
   width: 30px;
   height: 30px;
 }
+
+#share{
+
+  width: 20px;
+  height: 30px;
+}
+#add{
+
+  width: 30px;
+  height: 30px;
+}
+
+#splashFooter{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 15px;
+  /* Set the fixed height of the footer here */
+  height: 85px;
+}
