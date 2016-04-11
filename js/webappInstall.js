@@ -6,5 +6,5 @@ if (window.navigator.standalone == true) {
  //leave things alone
 
 }else {
- //$( "body" ).load( "splash.html" );
+ $( "body" ).load( "splash.html" );
 }
