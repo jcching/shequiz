@@ -13,9 +13,11 @@ console.log(currentProtocol);
 //  $( "body" ).load( "splash.html" );
 // }
 
-if (currentProtocol == "app:"){
-	console.log("say ahh");
-}else{
-	console.log("say no");
-	$( "body" ).load( "splash.html" );
-}
+// if (currentProtocol == "app:"){
+// 	console.log("say ahh");
+// }else{
+// 	console.log("say no");
+// 	$( "body" ).load( "splash.html" );
+// }
+
+window.alert(currentProtocol);
