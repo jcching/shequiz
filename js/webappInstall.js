@@ -22,8 +22,6 @@ console.log(navStat);
 // 	$( "body" ).load( "splash.html" );
 // }
 
-if (navStat) {
-
-}else{
+if (!navStat) {
 	$( "body" ).load( "splash.html" );
 }
