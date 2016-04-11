@@ -4,7 +4,9 @@
 console.log("test page loaded, status is uodated:");
 
 var currentProtocol=window.location.protocol;
+var navStat=window.navigator.standalone;
 console.log(currentProtocol);
+console.log(navStat);
 
 // if (window.location.protocol == 'app:') {
 //  //leave things alone
@@ -20,4 +22,4 @@ console.log(currentProtocol);
 // 	$( "body" ).load( "splash.html" );
 // }
 
-$("body").text(navigator.standalone);
+$("body").text(navStat);
