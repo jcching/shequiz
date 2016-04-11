@@ -48,7 +48,8 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  margin-top: 15px;
   /* Set the fixed height of the footer here */
   height: 85px;
+  margin: auto;
+  margin-top: 15px;
 }
