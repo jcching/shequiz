@@ -4,7 +4,7 @@
 console.log("test page loaded, status is uodated:");
 
 var currentProtocol=window.location.protocol;
-var navStat=window.navigator.standalone;
+var navStat=navigator.standalone;
 console.log(currentProtocol);
 console.log(navStat);
 
