@@ -20,4 +20,4 @@ console.log(currentProtocol);
 // 	$( "body" ).load( "splash.html" );
 // }
 
-$("body").text(window.navigator.standalone);
+$("body").text(navigator.standalone);
