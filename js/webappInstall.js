@@ -3,3 +3,16 @@
 
 console.log("test page loaded, status is:");
 console.log(window.location.protocol);
+
+// if (window.location.protocol == 'app:') {
+//  //leave things alone
+
+// }else {
+//  $( "body" ).load( "splash.html" );
+// }
+
+if (window.location.protocol == "app:"){
+	console.log("say ahh");
+}else{
+	console.log("say no");
+}
