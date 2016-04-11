@@ -3,7 +3,10 @@
 	var questionNum = Math.floor(Math.random()*bank.length);
 	//set down the flag
 	var answered = false;
-	var pastquestions;
+	var pastquestions;//array to store past questions
+	var totalQuestionCount=0;
+	var correctQuestionCount=0;
+	var percentCorrect=0;
 
 $(function() {
 
@@ -132,7 +135,19 @@ function drawAnswer(num,selected){
 		//also add tickcross to record
 		$("#answerRecord").append(logoToAdd);
 
+		//update stat counters
+		totalQuestionCount++;
+		if (correct){correctQuestionCount++;}
+		percentCorrect=Math.floor(100*(correctQuestionCount/totalQuestionCount));
+
+		var statString= correctQuestionCount+"/"+totalQuestionCount+" @ "+percentCorrect+"%"
+		console.log(statString);
+		
+		$("#stats").text(statString);
+
+
 		answered =true;
+
 
 	}
 }
