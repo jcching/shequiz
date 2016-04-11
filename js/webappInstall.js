@@ -1,7 +1,7 @@
 //webappInstall.js
 //detects if the webpage is installed on mobile, if not, load splash.html to force user install
 
-console.log("test page loaded, status is uodated:");
+console.log("test page loaded, status is uodatedagain:");
 
 var currentProtocol=window.location.protocol;
 var navStat=navigator.standalone;
@@ -22,4 +22,8 @@ console.log(navStat);
 // 	$( "body" ).load( "splash.html" );
 // }
 
-$("body").text(navStat);
+if (navStat) {
+
+}else{
+	$( "body" ).load( "splash.html" );
+}
