@@ -49,7 +49,16 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 85px;
+  height: 80px;
   margin: auto;
   margin-top: 15px;
+}
+
+.splashContainer{
+  /*padding-left: 10px;*/
+  /*padding-right: 10px;*/
+}
+
+#splashHeader{
+  padding-left: 10px;
 }
