@@ -66,3 +66,7 @@ body {
 .splashJumbo{
   margin-top: 5%;
 }
+
+.list-group-item-text{
+  font-size: 200%;
+}
