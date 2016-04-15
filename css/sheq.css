@@ -59,8 +59,10 @@ body {
   /*padding-right: 10px;*/
 }
 
-#splashHeader{
-  padding-left: 10px;
+#splashHeader>table{
+
+  margin-left:auto; 
+  margin-right:0;
 }
 
 .splashJumbo{
