@@ -70,6 +70,8 @@ function drawQuestion(num) {
 	$("#ansB").removeClass("list-group-item-danger");
 	$("#ansC").removeClass("list-group-item-success");
 	$("#ansC").removeClass("list-group-item-danger");
+        // update the question number so that draw answer will always produce the correct result
+        questionNum = num;
 
 }
 
