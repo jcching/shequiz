@@ -1,13 +1,22 @@
 
 	//pick a random question to start with
 	var questionNum = Math.floor(Math.random()*bank.length);
-	//set down the flag
+	//set down the flag for next question
 	var answered = false;
-	var pastquestions;//array to store past questions
+	//save the correct answer for drawAnswer
+	var correctAnswer = 0;
+
+	var pastquestions;//array to store past questions (unused)
+	//stat counters 
 	var totalQuestionCount=0;
 	var correctQuestionCount=0;
 	var percentCorrect=0;
+
+	//settings flags
 	var officeOnly = false;
+	var qUpperRange;
+	var qLowerRange;
+	var staffId;
 
 $(function() {
 	//$(window).unload(saveSettings); //autosaves settings on close
@@ -23,7 +32,7 @@ $(function() {
 			questionNum = Math.floor(Math.random()*bank.length);
 			drawQuestion(questionNum);
 		}else{
-			drawAnswer(questionNum,0);
+			drawAnswer(0);
 		}
 	});
 	$( "#ansB" ).click(function() {	  	
@@ -31,7 +40,7 @@ $(function() {
 			questionNum = Math.floor(Math.random()*bank.length);
 			drawQuestion(questionNum);
 		}else{
-			drawAnswer(questionNum,1);
+			drawAnswer(1);
 		}
 	});
 	$( "#ansC" ).click(function() {
@@ -39,7 +48,7 @@ $(function() {
 			questionNum = Math.floor(Math.random()*bank.length);
 			drawQuestion(questionNum);
 		}else{
-			drawAnswer(questionNum,2);
+			drawAnswer(2);
 		}
 	});
 
@@ -52,6 +61,8 @@ $(function() {
 
 	$("#saveSettingsBtn").click(function(){
 		saveSettings();
+		$('#settingsModal').modal('toggle');
+		$('.navbar-collapse').collapse('hide'); 
 	});
 
 
@@ -82,11 +93,21 @@ function drawQuestion(num) {
         // update the question number so that draw answer will always produce the correct result
         questionNum = num;
 
+    //save the correct answer 
+    //in global variable so drawAnswer will work correctly
+    
+    if (bank[num].ans=="A") {
+    	correctAnswer = 0;
+    }else if (bank[num].ans=="B") {
+    	correctAnswer = 1;
+    }else if (bank[num].ans=="C") {
+    	correctAnswer = 2;
+    }
+
 }
 
-function drawAnswer(num,selected){
+function drawAnswer(selected){
 
-	var ansNum;
 	var logoToAdd;
 	var correct;
 
@@ -94,25 +115,22 @@ function drawAnswer(num,selected){
 		//this code only runs if the question is in unanswered state
 
 		//color code answers
-		if (bank[num].ans=="A") {
-			ansNum=0;
+		if (correctAnswer === 0) {
 
 			$("#ansA").addClass("list-group-item-success");
 			// $("#ansB").addClass("list-group-item-danger");
 			// $("#ansC").addClass("list-group-item-danger");
 
 
-		}else if(bank[num].ans=="B") {
+		}else if(correctAnswer === 1) {
 
-			ansNum=1;
 			$("#ansB").addClass("list-group-item-success");
 
 			// $("#ansA").addClass("list-group-item-danger");
 			// $("#ansC").addClass("list-group-item-danger");
 
-		}else if(bank[num].ans=="C") {
+		}else if(correctAnswer === 2) {
 
-			ansNum=2;
 			$("#ansC").addClass("list-group-item-success");
 
 			// $("#ansB").addClass("list-group-item-danger");
@@ -122,7 +140,7 @@ function drawAnswer(num,selected){
 
 		//check answer
 
-		if (selected==ansNum) {
+		if (selected==correctAnswer) {
 			console.log("Correct!");
 			correct=true;
 			logoToAdd="<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>";
@@ -170,6 +188,17 @@ function loadSettings() {
 	    $('#qLowerRangeSelect').val(localStorage.qLowerRangeSelect);
 	    $('#qUpperRangeSelect').val(localStorage.qUpperRangeSelect);
 	    $("#staffId").val(localStorage.staffId);
+
+	    //load settings into local variables also
+	    if (localStorage.categoryOption === 1) {
+	    	officeOnly=true;
+	    }else{
+	    	officeOnly=false;
+	    }
+
+		qLowerRange=localStorage.qLowerRangeSelect
+		qUpperRange=localStorage.qUpperRangeSelect;
+		staffId=localStorage.staffId;
     }
 }
 
@@ -178,4 +207,10 @@ function saveSettings() {
     localStorage.qLowerRangeSelect = $('#qLowerRangeSelect').val();
     localStorage.qUpperRangeSelect = $("#qUpperRangeSelect").val();
     localStorage.staffId = $('#staffId').val();
+}
+
+function randomQuestionNumber(){
+	if(officeOnly){
+
+	}
 }
