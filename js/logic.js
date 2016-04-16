@@ -7,9 +7,13 @@
 	var totalQuestionCount=0;
 	var correctQuestionCount=0;
 	var percentCorrect=0;
+	var officeOnly = false;
 
 $(function() {
+	//$(window).unload(saveSettings); //autosaves settings on close
 
+
+    loadSettings();
 	//draw
 	drawQuestion(questionNum);
 
@@ -45,6 +49,11 @@ $(function() {
 		$('#searchModal').modal('toggle');
 		$('.navbar-collapse').collapse('hide'); 
 	});
+
+	$("#saveSettingsBtn").click(function(){
+		saveSettings();
+	});
+
 
 	//start the timer
 	$('#timer').timer({
@@ -152,4 +161,18 @@ function drawAnswer(num,selected){
 
 
 	}
+}
+
+function loadSettings() {
+    $('#categoryOption').val(localStorage.categoryOption);
+    $('#qLowerRangeSelect').val(localStorage.qLowerRangeSelect);
+    $('#qUpperRangeSelect').val(localStorage.qUpperRangeSelect);
+    $("#staffId").val(localStorage.staffId);
+}
+
+function saveSettings() {
+    localStorage.categoryOption = $('#categoryOption').val();
+    localStorage.qLowerRangeSelect = $('#qLowerRangeSelect').val();
+    localStorage.qUpperRangeSelect = $("#qUpperRangeSelect").val();
+    localStorage.staffId = $('#staffId').val();
 }
