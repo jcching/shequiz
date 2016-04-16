@@ -164,10 +164,13 @@ function drawAnswer(num,selected){
 }
 
 function loadSettings() {
-    $('#categoryOption').val(localStorage.categoryOption);
-    $('#qLowerRangeSelect').val(localStorage.qLowerRangeSelect);
-    $('#qUpperRangeSelect').val(localStorage.qUpperRangeSelect);
-    $("#staffId").val(localStorage.staffId);
+	//only load if settings exist
+	if (!(localStorage.categoryOption === undefined)) {
+	    $('#categoryOption').val(localStorage.categoryOption);
+	    $('#qLowerRangeSelect').val(localStorage.qLowerRangeSelect);
+	    $('#qUpperRangeSelect').val(localStorage.qUpperRangeSelect);
+	    $("#staffId").val(localStorage.staffId);
+    }
 }
 
 function saveSettings() {
