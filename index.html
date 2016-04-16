@@ -48,8 +48,8 @@
               <span class="glyphicon glyphicon-random" aria-hidden="true"></span> Random</a>
             </li>
             <li id="searchButton"><a href="#"data-toggle="modal" data-target="#searchModal"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a></li>
-<!-- 
-            <li id="searchButton"><a href="#"data-toggle="modal" data-target="#settingsModal"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li> -->
+
+            <li id="searchButton"><a href="#"data-toggle="modal" data-target="#settingsModal"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
@@ -151,59 +151,57 @@
       <div class="modal-body">
         <form id="settingsForm">
           <label class="control-label">Category</label>
-          <select class="form-control">
-            <option>Ops (All)</option>
-            <option>Office Based</option>
+          <select class="form-control" id="categoryOption" >
+            <option value="0" selected="selected">Ops (All)</option>
+            <option value="1">Office Based</option>
           </select>
 
 
           <label class="control-label">Question Range</label>
           <div class="input-group">
-          <select class="form-control">
-            <option>1</option>
-            <option>100</option>
-            <option>200</option>
-            <option>300</option>
-            <option>400</option>
-            <option>500</option>
-            <option>600</option>
-            <option>700</option>
-            <option>800</option>
-            <option>900</option>
-            <option>1000</option>
-            <option>1100</option>
-            <option>1200</option>
-            <option>1300</option>
-            <option>1400</option>
-            <option>1500</option>
-            <option>1600</option>
+          <select class="form-control" id="qLowerRangeSelect" >
+            <option value="1" selected="selected">1</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+            <option value="600">600</option>
+            <option value="700">700</option>
+            <option value="800">800</option>
+            <option value="900">900</option>
+            <option value="1000">1000</option>
+            <option value="1100">1100</option>
+            <option value="1200">1200</option>
+            <option value="1300">1300</option>
+            <option value="1400">1400</option>
+            <option value="1500">1500</option>
           </select>
           
-          <span class="input-group-addon" id="basic-addon1">to</span>
+          <span class="input-group-addon" >to</span>
 
-          <select class="form-control">
-            <option>1</option>
-            <option>100</option>
-            <option>200</option>
-            <option>300</option>
-            <option>400</option>
-            <option>500</option>
-            <option>600</option>
-            <option>700</option>
-            <option>800</option>
-            <option>900</option>
-            <option>1000</option>
-            <option>1100</option>
-            <option>1200</option>
-            <option>1300</option>
-            <option>1400</option>
-            <option>1500</option>
-            <option>1600</option>
+          <select class="form-control" id="qUpperRangeSelect">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+            <option value="600">600</option>
+            <option value="700">700</option>
+            <option value="800">800</option>
+            <option value="900">900</option>
+            <option value="1000">1000</option>
+            <option value="1100">1100</option>
+            <option value="1200">1200</option>
+            <option value="1300">1300</option>
+            <option value="1400">1400</option>
+            <option value="1500">1500</option>
+            <option value="1583" selected="selected">1583</option>
           </select>
           </div>
           <label class="control-label">Staff ID</label>
 
-      <input type="number" pattern="[0-9]*" inputmode="numeric" class="form-control" placeholder="15909" id="numberSearchBox">
+      <input type="number" id="staffId" pattern="[0-9]*" inputmode="numeric" class="form-control" placeholder="15909" id="numberSearchBox">
 
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" id="saveSettingsBtn">Save changes</button>
@@ -212,7 +210,7 @@
         </form>
       </div><!-- close modal body-->
     </div>
-  </div>
+  </div> 
 </div><!-- /close modal -->
 
 
