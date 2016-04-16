@@ -14,8 +14,8 @@
 
 	//settings flags
 	var officeOnly = false;
-	var qUpperRange;
-	var qLowerRange;
+	var qUpperRange = 1853;
+	var qLowerRange = 1;
 	var staffId;
 
 $(function() {
@@ -24,29 +24,26 @@ $(function() {
 
     loadSettings();
 	//draw
-	drawQuestion(questionNum);
+	drawRandomQuestion();
 
 	//click handlers
 	$( "#ansA" ).click(function() {
 	  	if(answered){
-			questionNum = Math.floor(Math.random()*bank.length);
-			drawQuestion(questionNum);
+			drawRandomQuestion();
 		}else{
 			drawAnswer(0);
 		}
 	});
 	$( "#ansB" ).click(function() {	  	
 		if(answered){
-			questionNum = Math.floor(Math.random()*bank.length);
-			drawQuestion(questionNum);
+			drawRandomQuestion();
 		}else{
 			drawAnswer(1);
 		}
 	});
 	$( "#ansC" ).click(function() {
 	  	if(answered){
-			questionNum = Math.floor(Math.random()*bank.length);
-			drawQuestion(questionNum);
+			drawRandomQuestion();
 		}else{
 			drawAnswer(2);
 		}
@@ -63,6 +60,12 @@ $(function() {
 		saveSettings();
 		$('#settingsModal').modal('toggle');
 		$('.navbar-collapse').collapse('hide'); 
+	});
+
+	//change handler to make sure range goes small>large
+	$( "#qLowerRangeSelect" ).change(function() {
+		var lowervalue=parseInt($( "#qLowerRangeSelect" ).val());
+		$( "#qUpperRangeSelect" ).html(generateRangeList(lowervalue));
 	});
 
 
@@ -196,8 +199,8 @@ function loadSettings() {
 	    	officeOnly=false;
 	    }
 
-		qLowerRange=localStorage.qLowerRangeSelect
-		qUpperRange=localStorage.qUpperRangeSelect;
+		qLowerRange=parseInt(localStorage.qLowerRangeSelect);
+		qUpperRange=parseInt(localStorage.qUpperRangeSelect);
 		staffId=localStorage.staffId;
     }
 }
@@ -207,10 +210,70 @@ function saveSettings() {
     localStorage.qLowerRangeSelect = $('#qLowerRangeSelect').val();
     localStorage.qUpperRangeSelect = $("#qUpperRangeSelect").val();
     localStorage.staffId = $('#staffId').val();
+
+    //load it into the runtime variables
+    loadSettings();
 }
 
 function randomQuestionNumber(){
-	if(officeOnly){
 
+	//returns a random question number filtered by settings
+	var compliantNumber;
+	var span=qUpperRange-qLowerRange;
+
+
+	var arrayCache=officeArray;
+
+	if(officeOnly){
+		//delete all elements in the array above and below
+		//filter values
+		arrayCache=$.grep( arrayCache, function( n, i ) {
+  			return n > qLowerRange;
+		});
+
+		arrayCache=$.grep( arrayCache, function( n, i ) {
+  			return n < qUpperRange;
+		});
+
+		//now pick a random element from the filtered array
+		var i = Math.floor(Math.random()*arrayCache.length);
+		compliantNumber = arrayCache[i];
+	}else{
+		compliantNumber=Math.floor((Math.random() * span) + qLowerRange); 
 	}
+
+	return compliantNumber;
+}
+
+function drawRandomQuestion(){
+	drawQuestion(randomQuestionNumber());
+}
+
+function generateRangeList(min){
+	var optionsArray=["<option value=\"100\">100</option>",
+	"<option value=\"200\">200</option>",
+	"<option value=\"300\">300</option>",
+	"<option value=\"400\">400</option>",
+	"<option value=\"500\">500</option>",
+	"<option value=\"600\">600</option>",
+	"<option value=\"700\">700</option>",
+	"<option value=\"800\">800</option>",
+	"<option value=\"900\">900</option>",
+	"<option value=\"1000\">1000</option>",
+	"<option value=\"1100\">1100</option>",
+	"<option value=\"1200\">1200</option>",
+	"<option value=\"1300\">1300</option>",
+	"<option value=\"1400\">1400</option>",
+	"<option value=\"1500\">1500</option>",
+	"<option value=\"1583\" selected=\"selected\">1583</option>"]
+
+	var removeValue=Math.floor(min/100);
+
+	//remove leftmost elements
+	optionsArray.splice(0,removeValue);
+
+	return optionsArray.join(" ");
+
+
+
 }
