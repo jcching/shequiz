@@ -121,7 +121,7 @@ function drawAnswer(selected){
 		
 		//run this first to prevent multi logging
 		answered =true;
-		
+
 		//color code answers
 		if (correctAnswer === 0) {
 
