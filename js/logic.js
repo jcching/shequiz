@@ -175,7 +175,7 @@ function drawAnswer(selected){
 		//update stat counters
 		totalQuestionCount++;
 		if (correct){correctQuestionCount++;}
-		percentCorrect=Math.floor(100*(correctQuestionCount/totalQuestionCount));
+		percentCorrect=Math.round(100*(correctQuestionCount/totalQuestionCount));
 
 		var statString= correctQuestionCount+"/"+totalQuestionCount+" @ "+percentCorrect+"%"
 		console.log(statString);
@@ -224,9 +224,12 @@ function loadSettings() {
 		qUpperRange=parseInt(localStorage.qUpperRangeSelect);
 		staffId=localStorage.staffId;
 
+    }
+
+    if (!(localStorage.highScore === undefined)) {
+
 		$("#personalBest").html(localStorage.highScore);
 		$("#dateforPersonBest").html(localStorage.recordDate);
-
     }
 }
 
