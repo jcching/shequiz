@@ -7,10 +7,12 @@
 	var correctAnswer = 0;
 
 	var pastquestions;//array to store past questions (unused)
+	
 	//stat counters 
 	var totalQuestionCount=0;
 	var correctQuestionCount=0;
 	var percentCorrect=0;
+	var streakCounter=0;
 
 	//settings flags
 	var officeOnly = false;
@@ -180,6 +182,22 @@ function drawAnswer(selected){
 
 		answered =true;
 
+		if (correct) {
+			streakCounter++;
+			//check if this breaks local records
+			//if it does save it to local
+					var currentTime = new Date();
+			if (localStorage.highScore === undefined) {
+				localStorage.highScore=streakCounter;
+				localStorage.recordDate=currentTime;
+			}else if (streakCounter>localStorage.highScore){
+				localStorage.highScore=streakCounter;
+				localStorage.recordDate=currentTime;
+			}
+		}else{
+			streakCounter=0;
+		}
+
 
 	}
 }
@@ -202,6 +220,10 @@ function loadSettings() {
 		qLowerRange=parseInt(localStorage.qLowerRangeSelect);
 		qUpperRange=parseInt(localStorage.qUpperRangeSelect);
 		staffId=localStorage.staffId;
+
+		$("#personalBest").html(localStorage.highScore);
+		$("#dateforPersonBest").html(localStorage.recordDate.toString());
+
     }
 }
 

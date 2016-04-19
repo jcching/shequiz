@@ -51,6 +51,8 @@
 
             <li id="searchButton"><a href="#"data-toggle="modal" data-target="#settingsModal"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li>
 
+            <li id="searchButton"><a href="#"data-toggle="modal" data-target="#statsModal"><span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span> Stats</a></li>
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -212,6 +214,35 @@
     </div>
   </div> 
 </div><!-- /close modal -->
+
+
+<!-- modal for stats (Highscores)-->
+<div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">High Scores</h4>
+      </div>
+      <div class="modal-body">
+          <p>Highest streak of correct answers</p>
+          <h4>Personal Best</h4>
+          <table class="table">
+            <tr>
+              <th>Score</th>
+              <th>Date</th>
+            </tr>
+            <tr>
+              <td id="personalBest"></td>
+              <td id="dateforPersonBest"></td>
+            </tr>
+          </table>
+
+      </div><!-- close modal body-->
+    </div>
+  </div> 
+</div><!-- /close modal -->
+
 
 
 
