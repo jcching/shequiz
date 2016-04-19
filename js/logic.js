@@ -189,10 +189,10 @@ function drawAnswer(selected){
 					var currentTime = new Date();
 			if (localStorage.highScore === undefined) {
 				localStorage.highScore=streakCounter;
-				localStorage.recordDate=currentTime;
+				localStorage.recordDate=currentTime.toString();
 			}else if (streakCounter>localStorage.highScore){
 				localStorage.highScore=streakCounter;
-				localStorage.recordDate=currentTime;
+				localStorage.recordDate=currentTime.toString();
 			}
 		}else{
 			streakCounter=0;
@@ -222,7 +222,7 @@ function loadSettings() {
 		staffId=localStorage.staffId;
 
 		$("#personalBest").html(localStorage.highScore);
-		$("#dateforPersonBest").html(localStorage.recordDate.toString());
+		$("#dateforPersonBest").html(localStorage.recordDate);
 
     }
 }
