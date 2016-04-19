@@ -113,9 +113,6 @@ function drawQuestion(num) {
 
 function drawAnswer(selected){
 
-	//run this first to prevent multi logging
-	answered =true;
-
 	var logoToAdd;
 	var correct;
 
@@ -203,6 +200,9 @@ function drawAnswer(selected){
 
 
 	}
+
+	//run this first to prevent multi logging
+	answered =true;
 }
 
 function loadSettings() {
