@@ -118,7 +118,10 @@ function drawAnswer(selected){
 
 	if (!answered) {
 		//this code only runs if the question is in unanswered state
-
+		
+		//run this first to prevent multi logging
+		answered =true;
+		
 		//color code answers
 		if (correctAnswer === 0) {
 
@@ -201,8 +204,7 @@ function drawAnswer(selected){
 
 	}
 
-	//run this first to prevent multi logging
-	answered =true;
+
 }
 
 function loadSettings() {
