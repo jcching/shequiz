@@ -227,7 +227,7 @@ function drawAnswer(selected){
 			}
 
 			if (streakCounter>serverData.streakCounter&&(serverData.streakCounter!=undefined)) {
-				serverPostStreak();
+				//serverPostStreak();
 			}
 
 		}else{
