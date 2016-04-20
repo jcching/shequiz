@@ -37,21 +37,21 @@ $(function() {
 	drawRandomQuestion();
 
 	//click handlers
-	$( "#ansA" ).tap(function() {
+	$( "#ansA" ).click(function() {
 	  	if(answered){
 			drawRandomQuestion();
 		}else{
 			drawAnswer(0);
 		}
 	});
-	$( "#ansB" ).tap(function() {	  	
+	$( "#ansB" ).click(function() {	  	
 		if(answered){
 			drawRandomQuestion();
 		}else{
 			drawAnswer(1);
 		}
 	});
-	$( "#ansC" ).tap(function() {
+	$( "#ansC" ).click(function() {
 	  	if(answered){
 			drawRandomQuestion();
 		}else{
