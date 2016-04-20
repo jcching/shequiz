@@ -20,6 +20,10 @@
 	var correctQuestionCount=0;
 	var percentCorrect=0;
 	var streakCounter=0;
+	var serverStatString;
+
+	//online stats
+	var highestStreak;
 
 	//settings flags
 	var officeOnly = false;
@@ -198,7 +202,8 @@ function drawAnswer(selected){
 		percentCorrect=Math.round(100*(correctQuestionCount/totalQuestionCount));
 
 		var statString= correctQuestionCount+"/"+totalQuestionCount+" @ "+percentCorrect+"%"
-		console.log(statString);
+		
+		serverStatString= statString;
 		
 		$("#stats").text(statString);
 
@@ -209,14 +214,16 @@ function drawAnswer(selected){
 			streakCounter++;
 			//check if this breaks local records
 			//if it does save it to local
-					var currentTime = new Date();
+			var currentTime = new Date();
 			if (localStorage.highScore === undefined) {
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
 			}else if (streakCounter>localStorage.highScore){
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
+				serverPostStreak();
 			}
+
 		}else{
 			streakCounter=0;
 		}
@@ -377,6 +384,35 @@ function generateRangeList(min){
 
 
 
+}
+
+//online features
+function serverPostStreak(){
+
+	var currentTime=new Date()
+	var stringtime =currentTime.toString();
+
+	var record = {
+		streakCounter:streakCounter, 
+		serverStatString:serverStatString,
+		time:stringtime,
+		staffId:staffId
+	};
+
+	var jsonString = JSON.stringify(record);
+
+
+	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
+  		.done(function( data ) {
+    		alert( "Data Loaded: " + data );
+  	});
+
+	console.log(record);
+
+}
+
+function serverGetStreak(){
+	//returns the highest score currently
 }
 
 
