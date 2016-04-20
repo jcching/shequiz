@@ -24,6 +24,7 @@
 
 	//online stats
 	var highestStreak;
+	var serverData;
 
 	//settings flags
 	var officeOnly = false;
@@ -413,6 +414,14 @@ function serverPostStreak(){
 
 function serverGetStreak(){
 	//returns the highest score currently
+	//http://shequiz-ceapas.rhcloud.com/load.txt
+
+
+	$.post( "http://shequiz-ceapas.rhcloud.com/load.txt", function( data ) {
+  		//alert( "Data Loaded: " + data );
+  		serverData=JSON.parse(data);
+  		console.log(serverData);
+	});
 }
 
 
