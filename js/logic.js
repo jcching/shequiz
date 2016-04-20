@@ -23,7 +23,7 @@
 
 	//settings flags
 	var officeOnly = false;
-	var qUpperRange = 1853;
+	var qUpperRange = 1538;
 	var qLowerRange = 1;
 	var staffId;
 
@@ -375,7 +375,7 @@ function generateRangeList(min){
 	"<option value=\"1300\">1300</option>",
 	"<option value=\"1400\">1400</option>",
 	"<option value=\"1500\">1500</option>",
-	"<option value=\"1583\" selected=\"selected\">1583</option>"]
+	"<option value=\"1538\" selected=\"selected\">1538</option>"]
 
 	var removeValue=Math.floor(min/100);
 
