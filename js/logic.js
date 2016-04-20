@@ -37,6 +37,7 @@ $(function() {
 
 
     loadSettings();
+    serverGetStreak();
 	//draw
 	drawRandomQuestion();
 
@@ -222,6 +223,10 @@ function drawAnswer(selected){
 			}else if (streakCounter>localStorage.highScore){
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
+				serverPostStreak();
+			}
+
+			if (streakCounter>serverData.streakCounter&&(serverData.streakCounter!=undefined)) {
 				serverPostStreak();
 			}
 
@@ -419,7 +424,16 @@ function serverGetStreak(){
 	$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
 	  .done(function( data ) {
 	    serverData=JSON.parse(data);
-  		console.log(serverData);
+  		//console.log(serverData);
+  		$("#staffIdHS").html(serverData.staffId);
+  		$("#streakHS").html(serverData.streakCounter);
+  		$("#statsHS").html(serverData.serverStatString);
+  		$("#dateHS").html(serverData.time);
+
+              // <td id="staffIdHS"></td>
+              // <td id="streakHS"></td>
+              // <td id="statsHS"></td>
+              // <td id="dateHS"></td>
 	  });
 }
 
