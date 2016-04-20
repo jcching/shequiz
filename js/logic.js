@@ -37,7 +37,7 @@ $(function() {
 
 
     loadSettings();
-    serverGetStreak();
+    //serverGetStreak();
 	//draw
 	drawRandomQuestion();
 
@@ -393,49 +393,45 @@ function generateRangeList(min){
 }
 
 //online features
-function serverPostStreak(){
+// function serverPostStreak(){
 
-	var currentTime=new Date()
-	var stringtime =currentTime.toString();
+// 	var currentTime=new Date()
+// 	var stringtime =currentTime.toString();
 
-	var record = {
-		streakCounter:streakCounter, 
-		serverStatString:serverStatString,
-		time:stringtime,
-		staffId:staffId
-	};
+// 	var record = {
+// 		streakCounter:streakCounter, 
+// 		serverStatString:serverStatString,
+// 		time:stringtime,
+// 		staffId:staffId
+// 	};
 
-	var jsonString = JSON.stringify(record);
+// 	var jsonString = JSON.stringify(record);
 
 
-	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
-  		.done(function( data ) {
-    		//alert( "Data Loaded: " + data );
-  	});
+// 	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
+//   		.done(function( data ) {
+//     		//alert( "Data Loaded: " + data );
+//   	});
 
-	console.log(record);
+// 	console.log(record);
 
-}
+// }
 
-function serverGetStreak(){
-	//returns the highest score currently
-	//http://shequiz-ceapas.rhcloud.com/load.txt
+// function serverGetStreak(){
+// 	//returns the highest score currently
+// 	//http://shequiz-ceapas.rhcloud.com/load.txt
 
-	$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
-	  .done(function( data ) {
-	    serverData=JSON.parse(data);
-  		//console.log(serverData);
-  		$("#staffIdHS").html(serverData.staffId);
-  		$("#streakHS").html(serverData.streakCounter);
-  		$("#statsHS").html(serverData.serverStatString);
-  		$("#dateHS").html(serverData.time);
+// 	$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
+// 	  .done(function( data ) {
+// 	    serverData=JSON.parse(data);
+//   		//console.log(serverData);
+//   		$("#staffIdHS").html(serverData.staffId);
+//   		$("#streakHS").html(serverData.streakCounter);
+//   		$("#statsHS").html(serverData.serverStatString);
+//   		$("#dateHS").html(serverData.time);
+// 	  });
 
-              // <td id="staffIdHS"></td>
-              // <td id="streakHS"></td>
-              // <td id="statsHS"></td>
-              // <td id="dateHS"></td>
-	  });
-}
+// }
 
 
 //array utility functions
