@@ -20,11 +20,6 @@
 	var correctQuestionCount=0;
 	var percentCorrect=0;
 	var streakCounter=0;
-	var serverStatString;
-
-	//online stats
-	var highestStreak;
-	var serverData;
 
 	//settings flags
 	var officeOnly = false;
@@ -204,8 +199,7 @@ function drawAnswer(selected){
 		percentCorrect=Math.round(100*(correctQuestionCount/totalQuestionCount));
 
 		var statString= correctQuestionCount+"/"+totalQuestionCount+" @ "+percentCorrect+"%"
-		
-		serverStatString= statString;
+		console.log(statString);
 		
 		$("#stats").text(statString);
 
@@ -216,7 +210,7 @@ function drawAnswer(selected){
 			streakCounter++;
 			//check if this breaks local records
 			//if it does save it to local
-			var currentTime = new Date();
+					var currentTime = new Date();
 			if (localStorage.highScore === undefined) {
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
@@ -224,10 +218,6 @@ function drawAnswer(selected){
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
 			}
-
-			// if (streakCounter>serverData.streakCounter&&(serverData.streakCounter!=undefined)) {
-			// 	//serverPostStreak();
-			// }
 
 		}else{
 			streakCounter=0;
