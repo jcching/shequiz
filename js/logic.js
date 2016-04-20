@@ -425,7 +425,7 @@ function generateRangeList(min){
 
 //array utility functions
 function shuffle(array) {
-    let counter = array.length;
+    var counter = array.length;
 
     // While there are elements in the array
     while (counter > 0) {
