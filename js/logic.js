@@ -8,6 +8,13 @@
 
 	var pastquestions;//array to store past questions (unused)
 	
+	var remainingQuestionArray;
+	//store compliant numbers here, random order
+	//when drawn, numbers are removed from the list until
+	//none remain.
+	//update whenever settings are changed
+
+	
 	//stat counters 
 	var totalQuestionCount=0;
 	var correctQuestionCount=0;
@@ -52,7 +59,7 @@ $(function() {
 	});
 
 	$("#numberSearchButton").click(function(){
-		var searchNumber = $("#numberSearchBox").val()-1;
+		var searchNumber = $("#numberSearchBox").val();
 		drawQuestion(searchNumber);
 		$('#searchModal').modal('toggle');
 		$('.navbar-collapse').collapse('hide'); 
@@ -78,16 +85,31 @@ $(function() {
 
 });
 
+function drawGameOverScreen(){
+	$("#refLabel").text("You have completed all questions in your bank");
+	$("#refLabel").append("<h6>"+qLowerRange+" to "+qUpperRange+"</h6>");
+
+	$("#questionLabel").text("Please relaunch to start again");
+
+	$("#ansA").hide();
+	$("#ansB").hide();
+	$("#ansC").hide();
+}	
+
 function drawQuestion(num) {
+
+	var shiftedNum=num-1;
+	//array begins at 0 while qa begins at 1
+
 	answered = false;//clear the answered state
-	$("#refLabel").text(bank[num].ref);
-	$("#refLabel").append("<h6>"+bank[num].source+"</h6>");
+	$("#refLabel").text(bank[shiftedNum].ref);
+	$("#refLabel").append("<h6>"+bank[shiftedNum].source+"</h6>");
 
-	$("#questionLabel").text(bank[num].question);
+	$("#questionLabel").text(bank[shiftedNum].question);
 
-	$("#ansA>p").text(bank[num].a);
-	$("#ansB>p").text(bank[num].b);
-	$("#ansC>p").text(bank[num].c);
+	$("#ansA>p").text(bank[shiftedNum].a);
+	$("#ansB>p").text(bank[shiftedNum].b);
+	$("#ansC>p").text(bank[shiftedNum].c);
 	//clear the color codes
 	$("#ansA").removeClass("list-group-item-success");
 	$("#ansA").removeClass("list-group-item-danger");
@@ -95,17 +117,15 @@ function drawQuestion(num) {
 	$("#ansB").removeClass("list-group-item-danger");
 	$("#ansC").removeClass("list-group-item-success");
 	$("#ansC").removeClass("list-group-item-danger");
-        // update the question number so that draw answer will always produce the correct result
-        questionNum = num;
 
     //save the correct answer 
     //in global variable so drawAnswer will work correctly
     
-    if (bank[num].ans=="A") {
+    if (bank[shiftedNum].ans=="A") {
     	correctAnswer = 0;
-    }else if (bank[num].ans=="B") {
+    }else if (bank[shiftedNum].ans=="B") {
     	correctAnswer = 1;
-    }else if (bank[num].ans=="C") {
+    }else if (bank[shiftedNum].ans=="C") {
     	correctAnswer = 2;
     }
 
@@ -226,6 +246,39 @@ function loadSettings() {
 		qUpperRange=parseInt(localStorage.qUpperRangeSelect);
 		staffId=localStorage.staffId;
 
+		//load the compliant numbers into compliantNumberArray
+		//based on settings
+		//also mixes up the order if random is selected(unused)
+
+		var arrayCache;
+		if(officeOnly){
+			//delete all elements in the array above and below
+			//filter values
+
+			arrayCache=officeArray;
+
+			arrayCache=$.grep( arrayCache, function( n, i ) {
+	  			return n > qLowerRange;
+			});
+
+			arrayCache=$.grep( arrayCache, function( n, i ) {
+	  			return n < qUpperRange;
+			});
+
+			//now shuffle the array and deliver it
+			remainingQuestionArray=shuffle(arrayCache);
+
+		}else{
+			//non office based is selected, 
+			//first list numbers sequentially from min to max
+			arrayCache=range(qLowerRange,qUpperRange)
+			remainingQuestionArray=shuffle(arrayCache);
+
+		}
+
+
+
+
     }
 
     if (!(localStorage.highScore === undefined)) {
@@ -243,6 +296,15 @@ function saveSettings() {
 
     //load it into the runtime variables
     loadSettings();
+}
+
+function giveNextQuestion(){
+	//ejects a number from the compliantNumberArray
+	//returns a int, when array empty return undefined
+	if(remainingQuestionArray.length>0){
+		return remainingQuestionArray.pop();
+	}
+
 }
 
 function randomQuestionNumber(){
@@ -276,7 +338,16 @@ function randomQuestionNumber(){
 }
 
 function drawRandomQuestion(){
-	drawQuestion(randomQuestionNumber());
+	//drawQuestion(randomQuestionNumber());
+	
+	var nextQuestion=giveNextQuestion();
+
+	if (nextQuestion===undefined){
+		drawGameOverScreen();
+	}else{
+		//questions remain, draw it
+		drawQuestion(nextQuestion);
+	}
 }
 
 function generateRangeList(min){
@@ -306,4 +377,34 @@ function generateRangeList(min){
 
 
 
+}
+
+
+//array utility functions
+function shuffle(array) {
+    let counter = array.length;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        let index = Math.floor(Math.random() * counter);
+
+        // Decrease counter by 1
+        counter--;
+
+        // And swap the last element with it
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+
+    return array;
+}
+
+function range(start, end) {
+    var foo = [];
+    for (var i = start; i <= end; i++) {
+        foo.push(i);
+    }
+    return foo;
 }
