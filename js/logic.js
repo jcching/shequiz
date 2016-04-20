@@ -273,7 +273,7 @@ function loadSettings() {
 		}else{
 			//non office based is selected, 
 			//first list numbers sequentially from min to max
-			arrayCache=range(qLowerRange,qUpperRange)
+			arrayCache=range(qLowerRange,qUpperRange);
 			remainingQuestionArray=shuffle(arrayCache);
 
 		}
@@ -281,6 +281,9 @@ function loadSettings() {
 
 
 
+    }else{
+    	arrayCache=range(1,1853);
+		remainingQuestionArray=shuffle(arrayCache);
     }
 
     if (!(localStorage.highScore === undefined)) {
@@ -303,9 +306,9 @@ function saveSettings() {
 function giveNextQuestion(){
 	//ejects a number from the compliantNumberArray
 	//returns a int, when array empty return undefined
-	if(remainingQuestionArray.length>0){
-		return remainingQuestionArray.pop();
-	}
+	// if(remainingQuestionArray.length>0){
+	// 	return remainingQuestionArray.pop();
+	// }
 
 }
 
@@ -380,47 +383,6 @@ function generateRangeList(min){
 
 
 }
-
-//online features
-// function serverPostStreak(){
-
-// 	var currentTime=new Date()
-// 	var stringtime =currentTime.toString();
-
-// 	var record = {
-// 		streakCounter:streakCounter, 
-// 		serverStatString:serverStatString,
-// 		time:stringtime,
-// 		staffId:staffId
-// 	};
-
-// 	var jsonString = JSON.stringify(record);
-
-
-// 	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
-//   		.done(function( data ) {
-//     		//alert( "Data Loaded: " + data );
-//   	});
-
-// 	console.log(record);
-
-// }
-
-// function serverGetStreak(){
-// 	//returns the highest score currently
-// 	//http://shequiz-ceapas.rhcloud.com/load.txt
-
-// 	$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
-// 	  .done(function( data ) {
-// 	    serverData=JSON.parse(data);
-//   		//console.log(serverData);
-//   		$("#staffIdHS").html(serverData.staffId);
-//   		$("#streakHS").html(serverData.streakCounter);
-//   		$("#statsHS").html(serverData.serverStatString);
-//   		$("#dateHS").html(serverData.time);
-// 	  });
-
-// }
 
 
 //array utility functions
