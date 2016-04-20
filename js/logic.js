@@ -284,7 +284,7 @@ function loadSettings() {
 
 
     }else{
-    	arrayCache=range(1,1853);
+    	arrayCache=range(1,1538);
 		remainingQuestionArray=shuffle(arrayCache);
     }
 
