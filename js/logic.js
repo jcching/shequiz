@@ -343,16 +343,16 @@ function randomQuestionNumber(){
 }
 
 function drawRandomQuestion(){
-	//drawQuestion(randomQuestionNumber());
+	drawQuestion(randomQuestionNumber());
 	
-	var nextQuestion=giveNextQuestion();
+	// var nextQuestion=giveNextQuestion();
 
-	if (nextQuestion===undefined){
-		drawGameOverScreen();
-	}else{
-		//questions remain, draw it
-		drawQuestion(nextQuestion);
-	}
+	// if (nextQuestion===undefined){
+	// 	drawGameOverScreen();
+	// }else{
+	// 	//questions remain, draw it
+	// 	drawQuestion(nextQuestion);
+	// }
 }
 
 function generateRangeList(min){
