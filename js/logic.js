@@ -306,9 +306,9 @@ function saveSettings() {
 function giveNextQuestion(){
 	//ejects a number from the compliantNumberArray
 	//returns a int, when array empty return undefined
-	// if(remainingQuestionArray.length>0){
-	// 	return remainingQuestionArray.pop();
-	// }
+	if(remainingQuestionArray.length>0){
+		return remainingQuestionArray.pop();
+	}
 
 }
 
