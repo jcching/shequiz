@@ -99,8 +99,12 @@ function drawGameOverScreen(){
 
 function drawQuestion(num) {
 
+
 	var shiftedNum=num-1;
 	//array begins at 0 while qa begins at 1
+	console.log("drawing:");
+
+	console.log(shiftedNum);
 
 	answered = false;//clear the answered state
 	$("#refLabel").text(bank[shiftedNum].ref);
@@ -170,7 +174,6 @@ function drawAnswer(selected){
 		//check answer
 
 		if (selected==correctAnswer) {
-			console.log("Correct!");
 			correct=true;
 			logoToAdd="<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>";
 		}else{
@@ -199,7 +202,6 @@ function drawAnswer(selected){
 		percentCorrect=Math.round(100*(correctQuestionCount/totalQuestionCount));
 
 		var statString= correctQuestionCount+"/"+totalQuestionCount+" @ "+percentCorrect+"%"
-		console.log(statString);
 		
 		$("#stats").text(statString);
 
