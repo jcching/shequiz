@@ -29,7 +29,7 @@
 
 $(function() {
 	//$(window).unload(saveSettings); //autosaves settings on close
-
+	FastClick.attach(document.body);
 
     loadSettings();
     //serverGetStreak();
