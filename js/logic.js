@@ -223,12 +223,11 @@ function drawAnswer(selected){
 			}else if (streakCounter>localStorage.highScore){
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
-				serverPostStreak();
 			}
 
-			if (streakCounter>serverData.streakCounter&&(serverData.streakCounter!=undefined)) {
-				//serverPostStreak();
-			}
+			// if (streakCounter>serverData.streakCounter&&(serverData.streakCounter!=undefined)) {
+			// 	//serverPostStreak();
+			// }
 
 		}else{
 			streakCounter=0;
