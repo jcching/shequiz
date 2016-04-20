@@ -405,7 +405,7 @@ function serverPostStreak(){
 
 	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
   		.done(function( data ) {
-    		alert( "Data Loaded: " + data );
+    		//alert( "Data Loaded: " + data );
   	});
 
 	console.log(record);
@@ -416,7 +416,7 @@ function serverGetStreak(){
 	//returns the highest score currently
 	//http://shequiz-ceapas.rhcloud.com/load.txt
 
-	$.post( "http://shequiz-ceapas.rhcloud.com/load.txt")
+	$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
 	  .done(function( data ) {
 	    serverData=JSON.parse(data);
   		console.log(serverData);
