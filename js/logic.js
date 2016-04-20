@@ -37,21 +37,21 @@ $(function() {
 	drawRandomQuestion();
 
 	//click handlers
-	$( "#ansA" ).click(function() {
+	$( "#ansA" ).tap(function() {
 	  	if(answered){
 			drawRandomQuestion();
 		}else{
 			drawAnswer(0);
 		}
 	});
-	$( "#ansB" ).click(function() {	  	
+	$( "#ansB" ).tap(function() {	  	
 		if(answered){
 			drawRandomQuestion();
 		}else{
 			drawAnswer(1);
 		}
 	});
-	$( "#ansC" ).click(function() {
+	$( "#ansC" ).tap(function() {
 	  	if(answered){
 			drawRandomQuestion();
 		}else{
@@ -352,7 +352,7 @@ function drawRandomQuestion(){
 		//questions remain, draw it
 		drawQuestion(nextQuestion);
 	}else{
-		
+
 		drawGameOverScreen();
 	}
 }
