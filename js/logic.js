@@ -32,7 +32,7 @@ $(function() {
 	FastClick.attach(document.body);
 
     loadSettings();
-    //serverGetStreak();
+    serverGetStreak();
 	//draw
 	drawRandomQuestion();
 
@@ -212,13 +212,18 @@ function drawAnswer(selected){
 			streakCounter++;
 			//check if this breaks local records
 			//if it does save it to local
-					var currentTime = new Date();
+			var currentTime = new Date();
 			if (localStorage.highScore === undefined) {
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
 			}else if (streakCounter>localStorage.highScore){
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
+			}
+
+			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData.streakCounter)) {
+
+				serverPostStreak();
 			}
 
 		}else{
@@ -394,6 +399,43 @@ function generateRangeList(min){
 
 
 
+}
+
+//online features
+function serverPostStreak(){
+
+	var currentTime=new Date()
+	var stringtime =currentTime.toString();
+
+	var record = {
+		streakCounter:streakCounter, 
+		serverStatString:serverStatString,
+		time:stringtime,
+		staffId:staffId
+	};
+
+	var jsonString = JSON.stringify(record);
+
+
+	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
+  		.done(function( data ) {
+    		alert( "Data Loaded: " + data );
+  	});
+
+	console.log(record);
+
+}
+
+function serverGetStreak(){
+	//returns the highest score currently
+	//http://shequiz-ceapas.rhcloud.com/load.txt
+
+
+	$.post( "http://shequiz-ceapas.rhcloud.com/load.php", function( data ) {
+  		//alert( "Data Loaded: " + data );
+  		serverData=JSON.parse(data);
+  		console.log(serverData);
+	});
 }
 
 
