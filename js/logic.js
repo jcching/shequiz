@@ -204,6 +204,7 @@ function drawAnswer(selected){
 		var statString= correctQuestionCount+"/"+totalQuestionCount+" @ "+percentCorrect+"%"
 		
 		$("#stats").text(statString);
+		serverStatString=statString;
 
 
 
