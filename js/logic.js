@@ -345,8 +345,11 @@ function randomQuestionNumber(){
 }
 
 function drawRandomQuestion(){
-	//drawQuestion(randomQuestionNumber());
-	
+	drawQuestion(randomQuestionNumber());
+	if(false){
+
+
+
 	var nextQuestion=giveNextQuestion();
 
 	if (nextQuestion!=undefined){
@@ -357,6 +360,7 @@ function drawRandomQuestion(){
 
 		drawGameOverScreen();
 	}
+}
 }
 
 function generateRangeList(min){
