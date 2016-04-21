@@ -418,12 +418,22 @@ function serverPostStreak(){
 	var jsonString = JSON.stringify(record);
 
 
-	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
+
+
+  	$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
+  		.done(function( data ) {
+    		serverData=JSON.parse(data);
+			//console.log(serverData);
+			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData.streakCounter)) {
+
+					$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
   		.done(function( data ) {
     		//alert( "Data Loaded: " + data );
   	});
+			}
 
-	console.log(record);
+  		});
+
 
 }
 
