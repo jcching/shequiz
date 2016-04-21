@@ -420,7 +420,7 @@ function serverPostStreak(){
 
 	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
   		.done(function( data ) {
-    		alert( "Data Loaded: " + data );
+    		//alert( "Data Loaded: " + data );
   	});
 
 	console.log(record);
