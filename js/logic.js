@@ -431,12 +431,20 @@ function serverGetStreak(){
 	//returns the highest score currently
 	//http://shequiz-ceapas.rhcloud.com/load.txt
 
+$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
+  .done(function( data ) {
+    serverData=JSON.parse(data);
+		//console.log(serverData);
+		$("#staffIdHS").html(serverData.staffId);
+		$("#streakHS").html(serverData.streakCounter);
+		$("#statsHS").html(serverData.serverStatString);
+		$("#dateHS").html(serverData.time);
 
-	$.post( "http://shequiz-ceapas.rhcloud.com/load.php", function( data ) {
-  		//alert( "Data Loaded: " + data );
-  		serverData=JSON.parse(data);
-  		console.log(serverData);
-	});
+            // <td id="staffIdHS"></td>
+            // <td id="streakHS"></td>
+            // <td id="statsHS"></td>
+            // <td id="dateHS"></td>
+  });
 }
 
 
