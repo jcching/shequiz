@@ -345,22 +345,26 @@ function randomQuestionNumber(){
 }
 
 function drawRandomQuestion(){
-	drawQuestion(randomQuestionNumber());
-	if(false){
+	//enable legacy mode
+
+	if(true){
 
 
 
-	var nextQuestion=giveNextQuestion();
+		var nextQuestion=giveNextQuestion();
 
-	if (nextQuestion!=undefined){
+		if (nextQuestion!=undefined){
 
-		//questions remain, draw it
-		drawQuestion(nextQuestion);
+			//questions remain, draw it
+			drawQuestion(nextQuestion);
+		}else{
+
+			drawGameOverScreen();
+		}
 	}else{
 
-		drawGameOverScreen();
+		drawQuestion(randomQuestionNumber());
 	}
-}
 }
 
 function generateRangeList(min){
