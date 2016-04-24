@@ -28,7 +28,8 @@
 	var staffId;
 
 $(function() {
-	//$(window).unload(saveSettings); //autosaves settings on close
+
+
 	FastClick.attach(document.body);
 
     loadSettings();
@@ -104,7 +105,7 @@ function drawQuestion(num) {
 	//array begins at 0 while qa begins at 1
 	console.log("drawing:");
 
-	console.log(shiftedNum);
+	console.log(num);
 
 	answered = false;//clear the answered state
 	$("#refLabel").text(bank[shiftedNum].ref);
@@ -245,6 +246,24 @@ function loadSettings() {
 	    $('#qUpperRangeSelect').val(localStorage.qUpperRangeSelect);
 	    $("#staffId").val(localStorage.staffId);
 
+
+	    var randomOption;
+
+	    if (localStorage.randomsequence==1) {
+	    	randomOption=true;
+	    	$("#randomOption").prop("checked", true);
+	    	$("#notRandomOption").prop("checked", false);
+	    }else{
+	    	randomOption=false;
+	    	$("#notRandomOption").prop("checked", true);
+	    	$("#randomOption").prop("checked", false);
+	    }
+
+
+
+
+
+
 	    //load settings into local variables also
 	    if (localStorage.categoryOption === 1) {
 	    	officeOnly=true;
@@ -275,14 +294,22 @@ function loadSettings() {
 	  			return n < qUpperRange;
 			});
 
+			if(randomOption){
+				arrayCache=shuffle(arrayCache);
+			}
 			//now shuffle the array and deliver it
-			remainingQuestionArray=shuffle(arrayCache);
+			remainingQuestionArray=arrayCache;
 
 		}else{
 			//non office based is selected, 
 			//first list numbers sequentially from min to max
 			arrayCache=range(qLowerRange,qUpperRange);
-			remainingQuestionArray=shuffle(arrayCache);
+
+			if(randomOption){
+				arrayCache=shuffle(arrayCache);
+			}
+			//now shuffle the array and deliver it
+			remainingQuestionArray=arrayCache;
 
 		}
 
@@ -302,10 +329,17 @@ function loadSettings() {
 }
 
 function saveSettings() {
+
     localStorage.categoryOption = $('#categoryOption').val();
     localStorage.qLowerRangeSelect = $('#qLowerRangeSelect').val();
     localStorage.qUpperRangeSelect = $("#qUpperRangeSelect").val();
     localStorage.staffId = $('#staffId').val();
+
+    if ($("#randomOption").is(":checked")) {
+		localStorage.randomsequence=1;
+    }else{
+    	localStorage.randomsequence=0;
+    }
 
     //load it into the runtime variables
     loadSettings();
@@ -315,7 +349,7 @@ function giveNextQuestion(){
 	//ejects a number from the compliantNumberArray
 	//returns a int, when array empty return undefined
 	if(remainingQuestionArray.length>0){
-		return remainingQuestionArray.pop();
+		return remainingQuestionArray.shift();
 	}
 
 }
