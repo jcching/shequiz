@@ -221,12 +221,15 @@ function drawAnswer(selected){
 				localStorage.recordDate=currentTime.toString();
 			}
 
-			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[0][1])) {
+
+
+		}else{
+			//when a streak is broken, check if it gets on the list, then submit it
+			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[4][1])) {
 
 				serverPostStreak();
 			}
 
-		}else{
 			streakCounter=0;
 		}
 
@@ -459,7 +462,7 @@ if(navigator.onLine)
 
 
 
-  		
+
 	// 		if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[0][1])) {
 
 	// 			serverPostStreak();
@@ -471,7 +474,7 @@ if(navigator.onLine)
   		.done(function( data ) {
     		serverData=JSON.parse(data);
 			//console.log(serverData);
-			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[0][1])) {
+			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[4][1])) {
 
 					$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
   		.done(function( data ) {
