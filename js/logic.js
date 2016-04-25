@@ -439,12 +439,14 @@ function serverPostStreak(){
 if(navigator.onLine) 
 {
 	var stringtime =$("#timer").data('seconds');
+	var rangeString = " "+qLowerRange+qUpperRange;
 
 	var record = {
 		streakCounter:streakCounter, 
 		serverStatString:serverStatString,
 		time:stringtime,
-		staffId:staffId
+		staffId:staffId,
+		rangeString:rangeString
 	};
 
 	var jsonString = JSON.stringify(record);
