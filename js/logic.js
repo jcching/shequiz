@@ -230,6 +230,7 @@ function drawAnswer(selected){
 			console.log("data tripped");
 			//when a streak is broken, check if it gets on the list, then submit it
 			if ((serverData[4][1]!=undefined )&& (streakCounter>serverData[4][1])) {
+				console.log("first layer passed");
 
 				serverPostStreak();
 			}else{
