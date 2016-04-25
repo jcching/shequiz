@@ -221,9 +221,9 @@ function drawAnswer(selected){
 				localStorage.recordDate=currentTime.toString();
 			}
 
-			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData.streakCounter)) {
+			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[0][1])) {
 
-				//serverPostStreak();
+				serverPostStreak();
 			}
 
 		}else{
@@ -451,27 +451,35 @@ if(navigator.onLine)
 
 	var jsonString = JSON.stringify(record);
 
-	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
+	// $.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
+ //  		.done(function( data ) {
+ //    		console.log(data );
+ //  	});
+
+
+
+
+  		
+	// 		if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[0][1])) {
+
+	// 			serverPostStreak();
+	// 		}
+
+
+
+  	$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
   		.done(function( data ) {
-    		console.log(data );
+    		serverData=JSON.parse(data);
+			//console.log(serverData);
+			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[0][1])) {
+
+					$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
+  		.done(function( data ) {
+    		//alert( "Data Loaded: " + data );
   	});
+			}
 
-
-
-
-  	// $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
-  	// 	.done(function( data ) {
-   //  		serverData=JSON.parse(data);
-			// //console.log(serverData);
-			// if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData.streakCounter)) {
-
-			// 		$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
-  	// 	.done(function( data ) {
-   //  		//alert( "Data Loaded: " + data );
-  	// });
-			// }
-
-  	// 	});
+  		});
 
 }
 }
