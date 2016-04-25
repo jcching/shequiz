@@ -493,7 +493,7 @@ $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
 		var recordBody=$("recordsTableBody");
 
 		$.each(serverData, function(i, item) {
-		    //alert(data[i].PageName);
+
 		    var tr = $('<tr/>').appendTo(recordBody);
 
 		    tr.append('<td>' + i + '</td>');
@@ -503,11 +503,11 @@ $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
 		    tr.append('<td>' + item[6] + '</td>');
 
 
-		});​
+		}); //close each
 
 		// recordsTable
 
-  });
+  });//close done
 }
 }
 
