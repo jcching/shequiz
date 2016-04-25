@@ -436,7 +436,8 @@ function generateRangeList(min){
 
 //online features
 function serverPostStreak(){
-
+if(navigator.onLine) 
+{
 	var currentTime=new Date()
 	var stringtime =currentTime.toString();
 
@@ -466,13 +467,14 @@ function serverPostStreak(){
 
   		});
 
-
+}
 }
 
 function serverGetStreak(){
 	//returns the highest score currently
 	//http://shequiz-ceapas.rhcloud.com/load.txt
-
+if(navigator.onLine) 
+{
 $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
   .done(function( data ) {
     serverData=JSON.parse(data);
@@ -487,6 +489,7 @@ $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
             // <td id="statsHS"></td>
             // <td id="dateHS"></td>
   });
+}
 }
 
 
