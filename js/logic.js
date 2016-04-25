@@ -219,7 +219,7 @@ function drawAnswer(selected){
 			}else if (streakCounter>localStorage.highScore){
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
-						
+
 				$("#personalBest").html(localStorage.highScore);
 				$("#dateforPersonBest").html(localStorage.recordDate);
 			}
@@ -478,11 +478,12 @@ if(navigator.onLine)
   		.done(function( data ) {
     		serverData=JSON.parse(data);
 			//console.log(serverData);
-			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[4][1])) {
+			if ((serverData[4][1]!=undefined )&& (streakCounter>serverData[4][1])) {
 
 					$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
   		.done(function( data ) {
-    		//alert( "Data Loaded: " + data );
+  			
+    		console.log(data );
     		streakCounter=0;
   	});
 			}
