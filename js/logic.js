@@ -407,6 +407,8 @@ function drawRandomQuestion(){
 		}else{
 
 			drawGameOverScreen();
+			//also submit the streak when game is over
+			serverPostStreak();
 		}
 	}else{
 
