@@ -219,8 +219,10 @@ function drawAnswer(selected){
 			}else if (streakCounter>localStorage.highScore){
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
+						
+				$("#personalBest").html(localStorage.highScore);
+				$("#dateforPersonBest").html(localStorage.recordDate);
 			}
-			loadSettings();
 
 
 
