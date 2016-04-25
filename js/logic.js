@@ -479,23 +479,36 @@ if(navigator.onLine)
 function serverGetStreak(){
 	//returns the highest score currently
 	//http://shequiz-ceapas.rhcloud.com/load.txt
-// if(navigator.onLine) 
-// {
-// $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
-//   .done(function( data ) {
-//     serverData=JSON.parse(data);
-// 		//console.log(serverData);
-// 		$("#staffIdHS").html(serverData.staffId);
-// 		$("#streakHS").html(serverData.streakCounter);
-// 		$("#statsHS").html(serverData.serverStatString);
-// 		$("#dateHS").html(serverData.time);
+if(navigator.onLine) 
+{
+$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
+  .done(function( data ) {
+    serverData=JSON.parse(data);
+		// //console.log(serverData);
+		// $("#staffIdHS").html(serverData.staffId);
+		// $("#streakHS").html(serverData.streakCounter);
+		// $("#statsHS").html(serverData.serverStatString);
+		// $("#dateHS").html(serverData.time);
 
-//             // <td id="staffIdHS"></td>
-//             // <td id="streakHS"></td>
-//             // <td id="statsHS"></td>
-//             // <td id="dateHS"></td>
-//   });
-// }
+		var recordBody=$("recordsTableBody");
+
+		$.each(serverData, function(i, item) {
+		    //alert(data[i].PageName);
+		    var tr = $('<tr/>').appendTo(recordBody);
+
+		    tr.append('<td>' + i + '</td>');
+		    tr.append('<td>' + item[2] + '</td>');
+		    tr.append('<td>' + item[1] + '</td>');
+		    tr.append('<td>' + item[3] + '</td>');
+		    tr.append('<td>' + item[6] + '</td>');
+
+
+		});​
+
+		// recordsTable
+
+  });
+}
 }
 
 
