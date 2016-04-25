@@ -1,8 +1,6 @@
 //webappInstall.js
 //detects if the webpage is installed on mobile, if not, load splash.html to force user install
 
-console.log("test page loaded, status is uodatedagain:");
-
 var isIphoneApp=navigator.standalone;
 var isChromeApp=window.matchMedia('(display-mode: standalone)').matches
 

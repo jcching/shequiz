@@ -103,9 +103,7 @@ function drawQuestion(num) {
 
 	var shiftedNum=num-1;
 	//array begins at 0 while qa begins at 1
-	console.log("drawing:");
 
-	console.log(num);
 
 	answered = false;//clear the answered state
 	$("#refLabel").text(bank[shiftedNum].ref);
