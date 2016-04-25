@@ -438,8 +438,7 @@ function generateRangeList(min){
 function serverPostStreak(){
 if(navigator.onLine) 
 {
-	var currentTime=new Date()
-	var stringtime =currentTime.toString();
+	var stringtime =$("#timer").data('seconds');
 
 	var record = {
 		streakCounter:streakCounter, 
@@ -450,22 +449,27 @@ if(navigator.onLine)
 
 	var jsonString = JSON.stringify(record);
 
-
-
-
-  	$.post( "http://shequiz-ceapas.rhcloud.com/load.php")
+	$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
   		.done(function( data ) {
-    		serverData=JSON.parse(data);
-			//console.log(serverData);
-			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData.streakCounter)) {
-
-					$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
-  		.done(function( data ) {
-    		//alert( "Data Loaded: " + data );
+    		console.log(data );
   	});
-			}
 
-  		});
+
+
+
+  	// $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
+  	// 	.done(function( data ) {
+   //  		serverData=JSON.parse(data);
+			// //console.log(serverData);
+			// if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData.streakCounter)) {
+
+			// 		$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
+  	// 	.done(function( data ) {
+   //  		//alert( "Data Loaded: " + data );
+  	// });
+			// }
+
+  	// 	});
 
 }
 }
