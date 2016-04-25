@@ -220,12 +220,13 @@ function drawAnswer(selected){
 				localStorage.highScore=streakCounter;
 				localStorage.recordDate=currentTime.toString();
 			}
+			loadSettings();
 
 
 
 		}else{
 			//when a streak is broken, check if it gets on the list, then submit it
-			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[4][1])) {
+			if ((serverData[4][1]!=undefined )&& (streakCounter>serverData[4][1])) {
 
 				serverPostStreak();
 			}else{
