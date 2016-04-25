@@ -228,9 +228,10 @@ function drawAnswer(selected){
 			if ((serverData.streakCounter!=undefined )&& (streakCounter>serverData[4][1])) {
 
 				serverPostStreak();
+			}else{
+				streakCounter=0;
 			}
 
-			streakCounter=0;
 		}
 
 
@@ -479,6 +480,7 @@ if(navigator.onLine)
 					$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
   		.done(function( data ) {
     		//alert( "Data Loaded: " + data );
+    		streakCounter=0;
   	});
 			}
 
