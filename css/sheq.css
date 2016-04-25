@@ -72,3 +72,7 @@ body {
 .list-group-item-text{
   font-size: 120%;
 }
+
+.jumbotron>p{
+  font-size: 110%;
+}
