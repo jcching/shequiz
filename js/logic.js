@@ -495,8 +495,9 @@ $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
 		$.each(serverData, function(i, item) {
 
 		    var tr = $('<tr/>').appendTo(recordBody);
+		    var rank = i+1;
 
-		    tr.append('<td>' + i + '</td>');
+		    tr.append('<td>' + rank + '</td>');
 		    tr.append('<td>' + item[2] + '</td>');
 		    tr.append('<td>' + item[1] + '</td>');
 		    tr.append('<td>' + item[3] + '</td>');
