@@ -490,7 +490,7 @@ $.post( "http://shequiz-ceapas.rhcloud.com/load.php")
 		// $("#statsHS").html(serverData.serverStatString);
 		// $("#dateHS").html(serverData.time);
 
-		var recordBody=$("recordsTableBody");
+		var recordBody=$("#recordsTableBody");
 
 		$.each(serverData, function(i, item) {
 
