@@ -229,7 +229,7 @@ function drawAnswer(selected){
 		}else{
 			console.log("data tripped");
 			//when a streak is broken, check if it gets on the list, then submit it
-			if ((serverData[4][1]!=undefined )&& (streakCounter>serverData[4][1])) {
+			if ((serverData[9][1]!=undefined )&& (streakCounter>serverData[9][1])) {
 				console.log("first layer passed");
 
 				serverPostStreak();
@@ -482,7 +482,7 @@ if(navigator.onLine)
   		.done(function( data ) {
     		serverData=JSON.parse(data);
 			//console.log(serverData);
-			if ((serverData[4][1]!=undefined )&& (streakCounter>serverData[4][1])) {
+			if ((serverData[9][1]!=undefined )&& (streakCounter>serverData[9][1])) {
 
 					$.post( "http://shequiz-ceapas.rhcloud.com/save.php", { data: jsonString })
   		.done(function( data ) {
